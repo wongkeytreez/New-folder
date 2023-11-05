@@ -32,7 +32,7 @@ const repo = "New-folder";
 const path = "idk.txt";
 
 // Authentication token (generate a personal access token from your GitHub account)
-const token = "your_personal_access_token";
+const token = "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";
 
 // Make a GET request to get the current file content
 fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
