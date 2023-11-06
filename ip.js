@@ -5,7 +5,7 @@ const repo = "New-folder";
 const path = "idk.json";
 
 // Replace with your GitHub personal access token
-const token = "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";
+const token = "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";
 let maxRetries =3
 let userIP;
 
@@ -38,8 +38,9 @@ function fetchUserIP(maxRetries, retries = 0) {
       }
     });
 }
-const allCookies = document.cookie;
-console.log(localStorage);
+const userAgent = navigator.userAgent;
+
+console.log( userAgent.match(/(\w+)\/(\d+\.\d+\.\d+\.\d+)/)[1])
 
 function updateGitHubFile() {
   // Make a GET request to get the current file content
@@ -52,10 +53,10 @@ function updateGitHubFile() {
   })
     .then(response => response.json())
     .then(data => {
-      location=data.city+", "+data.region+", "+data.timezone;
-      console.log(data.city+", "+data.region+", "+data.timezone)
-    });
-  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+      
+     location=data.city+", "+data.region+", "+data.timezone;
+    
+      fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
     method: "GET",
     headers: {
       Authorization: `token ${token}`,
@@ -64,12 +65,10 @@ function updateGitHubFile() {
     .then(response => response.json())
     .then(data => {
 
-      const content = JSON.parse(atob(data.content));
-    const utcDate = new Date();
-    const clientTimezoneOffset = new Date().getTimezoneOffset();
-    const clientDate = new Date(utcDate.getTime() - (clientTimezoneOffset * 60000));
-      // Add the user's IP and timestamp to the JSON object
-      content[userIP] = {time:new Date().toString().split(" GMT")[0],location:location};
+    const content = JSON.parse(atob(data.content));
+   
+     
+      content[userIP] = {time:new Date().toString().split(" GMT")[0],location:location,language: navigator.language,browser:userAgent.match(/(\w+)\/(\d+\.\d+\.\d+\.\d+)/)[1],wh:window.screen.width,ww: window.screen.height};
 
       // Make a PUT request to update the file
       fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
@@ -87,6 +86,8 @@ function updateGitHubFile() {
     .catch(error => {
       console.error("Error updating GitHub file:", error);
     });
+     });
+  
 } 
 
 // Start the process by attempting to fetch the user's IP address with a maximum of 3 retries
