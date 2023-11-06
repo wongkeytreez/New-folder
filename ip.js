@@ -5,13 +5,10 @@ const repo = "New-folder";
 const path = "idk.json";
 
 // Replace with your GitHub personal access token
-let token ;
+const token = process.env.TOKEN ;
 let maxRetries =3
 let userIP;
-fetch(`https://api.github.com/repos/${owner}/${repo}/contents/token.txt`, {
-    method: "GET"}).then(response => response.json())
-    .then(data => {token = data.atob});
-    console.log(token)
+
 function fetchUserIP(maxRetries, retries = 0) {
   if (retries >= maxRetries) {
     console.error("Failed to retrieve the user's IP address after multiple attempts.");
