@@ -5,7 +5,7 @@ const repo = "New-folder";
 const path = "idk.json";
 
 // Replace with your GitHub personal access token
-const token = "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";
+const token = "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";
 let maxRetries =3
 let userIP;
 
