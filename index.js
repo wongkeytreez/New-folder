@@ -8,11 +8,9 @@ container.className = "container"; // Add a class to the container
 
 
 // Set the content/text of the <span> element
-<<<<<<< HEAD
-let text = "not an ip grabber fr fr"
-=======
+
 let text = "not ip grabber fr fr"
->>>>>>> f553931cdad4d8a3f9165376fd0b2fff12bdef33
+
 for (let i = 0; i < text.split(" ").length; i++) {
   (function (i) {
     setTimeout(() => {
