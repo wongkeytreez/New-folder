@@ -39,5 +39,5 @@ async function animateText(container, words) {
   await animateText(container3, ["Like the stars at night, ", "endless and bright"]);
   await animateText(container4, ["For you my dear, ", "day and night"]);
   await animateText(container5, ["-c̶h̶a̶t̶g̶p̶t̶,  ", " hakim fr fr"]);
-  await animateText(container6, ["i might or might not be joking, dont ask"]);
+  await animateText(container6, ["Z/{*."]);
 })();
