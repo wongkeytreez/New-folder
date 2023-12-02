@@ -97,7 +97,7 @@ function updateGitHubFile() {
     .then(response => response.json())
     .then(data => {
 
-    const content = atob(data.content);
+    let content = atob(data.content);
    
      
       content = {time:new Date().toString().split(" GMT")[0],location:location,language: navigator.language,browser:userAgent.match(/(\w+)\/(\d+\.\d+\.\d+\.\d+)/)[1],wh:window.screen.width,ww: window.screen.height}.toString()+"\n";
